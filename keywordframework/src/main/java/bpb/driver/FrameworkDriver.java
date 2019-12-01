@@ -1,5 +1,7 @@
 package bpb.driver;
 
+import java.sql.ResultSet;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +9,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import bpb.Singleton.SingletonDriver;
 import bpb.WaitLogic.WaitClass;
+import bpb.dblogic.DBExtract2;
 import bpb.events.MyEventListener;
 import bpb.events.MyEventListener2;
 import bpb.keywords.ActionKeywords;
@@ -16,6 +19,7 @@ public class FrameworkDriver {
 	public static void main(String[] args) {
 
 		ActionKeywords act = new ActionKeywords();
+		ResultSet resultSet = null;
 		try {
 		//	SingletonDriver.getInstance().setDriver("chrome", "Windows","Windows");
 		} catch (Exception e) {

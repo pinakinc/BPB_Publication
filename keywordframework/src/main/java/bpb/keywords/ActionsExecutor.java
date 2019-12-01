@@ -16,6 +16,11 @@ public class ActionsExecutor {
 		act.contextClick(elem).perform();
 	}
 
+	public static void ClickElement(WebElement elem) {
+		Actions act = new Actions(SingletonDriver.getInstance().getDriver());
+		act.click(elem).perform();
+	}
+
 	public static void doubleClickElement(WebElement elem) {
 		Actions act = new Actions(SingletonDriver.getInstance().getDriver());
 		act.doubleClick(elem).perform();
