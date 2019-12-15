@@ -1,0 +1,37 @@
+<suite name="Parameter test Suite" verbose="1">
+    <!-- This parameter will be passed to every test in this suite -->
+    <parameter name="suite-param" value="parameter at suite level" />
+    <test name="Parameter Test1">
+        <classes>
+            <class name="keywordframework.ParamTest1">
+                <methods>
+                    <include name="prameterTest1" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Parameter Test2">
+        <!-- This parameter will be passed this test only -->
+        <parameter name="paramtest2" value="parameter for test 2" />
+        <classes>
+            <class name="keywordframework.ParamTest1">
+                <methods>
+                    <include name="prameterTest2" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Parameter Test three">
+        <!-- Overriding suite level parameter -->
+        <parameter name="suite-param" value="suite parameter overridden" />
+        <!-- Test specific parameter -->
+        <parameter name="paramtest3" value="parameter for test 3" />
+        <classes>
+            <class name="keywordframework.ParamTest1">
+                <methods>
+                    <include name="prameterTest3" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

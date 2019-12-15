@@ -1,0 +1,42 @@
+<suite name="Parameter test Suite" verbose="1" parallel="tests" thread-count="3">
+    <!-- This parameter will be passed to every test in this suite -->
+    <parameter name="suite-param" value="parameter at suite level" />
+     <test name="Group Test1">
+    	<groups>
+    		<run>
+    			<include name="GroupA"/>
+    		</run>
+    	</groups>
+    	<parameter name="param1" value="GroupA" />
+    	
+        <classes>
+            <class name="keywordframework.TestClass1">
+            	
+            </class>
+        </classes>
+    </test>
+    <test name="Group Test2">
+ 	  	<groups>
+    		<run>
+    			<include name="GroupB"/>
+    		</run>
+    	</groups>
+ 		<parameter name="param2" value="GroupB" />
+        <classes>
+            <class name="keywordframework.TestClass1">
+            </class>
+        </classes>
+    </test>
+        <test name="Group Test3">
+ 	  	<groups>
+    		<run>
+    			<include name="GroupC"/>
+    		</run>
+    	</groups>
+ 		<parameter name="param3" value="GroupC" />
+        <classes>
+            <class name="keywordframework.TestClass1">
+            </class>
+        </classes>
+    </test> 
+</suite>
