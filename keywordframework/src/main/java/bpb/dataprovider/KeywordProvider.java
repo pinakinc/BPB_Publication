@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javax.sql.rowset.CachedRowSet;
 
+import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -19,11 +20,13 @@ public class KeywordProvider {
 
 	static Object[][] testKeywords = null;
 	@DataProvider(name="keywords")
-	public static Object[][] keywords(){
+	public static Object[][] keywords(ITestContext itestContext){
 		int row = 0;
 		int rows = 0;
 		try {
-		CachedRowSet crs = DBExtract3.extractRecords("GroupA");
+		String[] group = itestContext.getIncludedGroups();
+		System.out.println("Group passed as parameter "+group[0]);
+		CachedRowSet crs = DBExtract3.extractRecords(group[0]);
 		ResultSetMetaData rsmd = crs.getMetaData();
 		System.out.println("Framework Driver Logic started");
 		
@@ -63,7 +66,7 @@ public class KeywordProvider {
 		return testKeywords;
 	}
 	
-	@Test(dataProvider="keywords")
+	@Test(dataProvider="keywords", groups= {"GroupA","GroupB","GroupC"})
 	public void testKeywords(String testcaseID, String teststepID,String actionKey,String xPath,String dataKey) {
 		System.out.println("TestCaseID: "+testcaseID);
 		System.out.println("TestStepID: "+teststepID);

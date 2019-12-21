@@ -1,4 +1,4 @@
-<suite name="Parameter test Suite" verbose="1" parallel="tests" thread-count="3">
+<suite name="Parameter test Suite" verbose="1" parallel="tests">
     <!-- This parameter will be passed to every test in this suite -->
     <parameter name="suite-param" value="parameter at suite level" />
      <test name="Group Test1">
@@ -10,7 +10,7 @@
     	<parameter name="param1" value="GroupA" />
     	
         <classes>
-            <class name="keywordframework.TestClass1">
+            <class name="keywordframework.TestClass2">
             	
             </class>
         </classes>
@@ -23,7 +23,7 @@
     	</groups>
  		<parameter name="param2" value="GroupB" />
         <classes>
-            <class name="keywordframework.TestClass1">
+            <class name="keywordframework.TestClass2">
             </class>
         </classes>
     </test>
@@ -35,7 +35,7 @@
     	</groups>
  		<parameter name="param3" value="GroupC" />
         <classes>
-            <class name="keywordframework.TestClass1">
+            <class name="keywordframework.TestClass2">
             </class>
         </classes>
     </test> 

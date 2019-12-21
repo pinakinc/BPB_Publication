@@ -5,6 +5,12 @@
 	<listener class-name="bpb.listeners.MyListener2"/>
 </listeners>
   <test name="Test">
+     	<groups>
+    		<run>
+    			<include name="GroupA"/>
+    		</run>
+    	</groups>
+ 
   	<classes>
   		<class name="bpb.dataprovider.KeywordProvider"/>
   	</classes>

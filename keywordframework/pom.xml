@@ -90,7 +90,7 @@
           <target>1.8</target>
         
           <suiteXmlFiles>
-            <suiteXmlFile>testng2.xml</suiteXmlFile>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         
         </configuration>
