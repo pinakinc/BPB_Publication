@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import javax.sql.rowset.CachedRowSet;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
@@ -13,7 +14,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
+import bpb.Singleton.SingletonDriver;
 import bpb.WaitLogic.WaitClass;
+import bpb.assertions.Assertions;
 import bpb.dataprovider.KeywordProvider;
 import bpb.dblogic.DBExtract3;
 import bpb.keywords.Action_Keywords;
@@ -23,7 +31,11 @@ import bpb.keywords.Action_Keywords;
 public class TestClass2 {
 	
 	Action_Keywords actKeywords = new Action_Keywords();
+	Assertions assertions = new Assertions();
 	WaitClass wdWait = null;
+	ExtentReports report = null;
+	ExtentHtmlReporter reporter=null;
+	ExtentTest test = null;
 //	String btnLogin = "//a[@href='https://ui.freecrm.com']";
 //	String uNameXPath = "//input[@name='email']";
 //	String passwordXPath = "//input[@name='password']";
@@ -31,6 +43,7 @@ public class TestClass2 {
 //	String logoutParent = "//div[@class='ui buttons']/div";
 //	String btnLogout ="//span[text()='Log Out']";
 //	String callQueue = "//span[text()='Call Queue']";
+	String contactHeader = "(//div[@class='header'])[1]";
 	
 	public TestClass2() {
 		System.out.println("Constructor called");
@@ -41,6 +54,9 @@ public class TestClass2 {
 		actKeywords.openBrowser("chrome");
 		wdWait = new WaitClass();
 		wdWait.waitImplicitely();
+		reporter = new ExtentHtmlReporter("report.html");
+		report = new ExtentReports();
+		report.attachReporter(reporter);
 		//SingletonDriver.getInstance().getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 	}
 	
@@ -48,6 +64,7 @@ public class TestClass2 {
 	@Parameters({ "param1" })
 	public void test1(String param1) {
 		System.out.println("Before starting test1");
+		test = report.createTest("test1","First Test");
 //		actKeywords.navigateURL("http://www.freecrm.com");
 //		actKeywords.clickElement(btnLogin);
 //		actKeywords.enterText(uNameXPath, "chaubalpinakin@gmail.com");
@@ -70,6 +87,9 @@ public class TestClass2 {
 			System.out.println("XPath"+xpath);
 			String datakey = crs.getString("DataKey");
 			System.out.println("DataKey"+datakey);
+			String verifyText = crs.getString("Expected");
+			System.out.println("DataKey"+verifyText);
+
 			switch(actionKey) {
 				case "navigate":
 					actKeywords.navigateURL("http://www.freecrm.com");
@@ -80,9 +100,14 @@ public class TestClass2 {
 				case "entertext":
 					actKeywords.enterText(xpath, datakey);
 					break;
+				case "verifyText":
+					assertions.assertEqualsSA(SingletonDriver.getInstance().getDriver().findElement(By.xpath(contactHeader)).getText(), verifyText);
+					test.log(Status.PASS, "The test has passed");
+					break;
 				
 
 			}
+			
 			
 		//	for (int j1 = 1; j1 <= rsmd.getColumnCount(); j1++) {
 		//		System.out.println("Column in FrameworkDriver: " + rsmd.getColumnName(j1));
@@ -223,6 +248,9 @@ public class TestClass2 {
 	//	actKeywords.clickElement(logoutParent);
 	//	actKeywords.clickElement(btnLogout);
 		actKeywords.closeBrowser();
+		assertions.assertAll();
+		report.flush();
+		
 	}
 
 }

@@ -47,7 +47,7 @@ public class DBExtract3 {
 						dbPwd);
 				stmt = conn.createStatement();
 				resultSet = stmt
-						.executeQuery("select A.TestCaseID,A.TestStepID,A.ActionKey,B.XPath,C.DataKey from testcases A left outer join object_repository B on A.ORID=B.ORID left outer join testdata C on A.TestCaseID=C.TestCaseID and A.TestStepID=C.TestStepID where A.TestCaseID in (select TestCaseID from testconfig TC where TC.Execute='Y' and TC.Group='"+group+"') order by A.TestStepID asc");
+						.executeQuery("select A.TestCaseID,A.TestStepID,A.ActionKey,B.XPath,C.DataKey,A.Expected from testcases A left outer join object_repository B on A.ORID=B.ORID left outer join testdata C on A.TestCaseID=C.TestCaseID and A.TestStepID=C.TestStepID where A.TestCaseID in (select TestCaseID from testconfig TC where TC.Execute='Y' and TC.Group='"+group+"') order by A.TestStepID asc");
 				rsmd = resultSet.getMetaData();
 				
 				RowSetFactory rsFactory = RowSetProvider.newFactory();

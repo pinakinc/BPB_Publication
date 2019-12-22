@@ -1,4 +1,4 @@
-<suite name="Parameter test Suite" verbose="1" parallel="tests">
+<suite name="Parameter test Suite" verbose="1" parallel="false">
     <!-- This parameter will be passed to every test in this suite -->
     <parameter name="suite-param" value="parameter at suite level" />
      <test name="Group Test1">
@@ -15,7 +15,7 @@
             </class>
         </classes>
     </test>
-    <test name="Group Test2">
+    <test name="Group Test2" enabled="false">
  	  	<groups>
     		<run>
     			<include name="GroupB"/>
@@ -27,7 +27,7 @@
             </class>
         </classes>
     </test>
-        <test name="Group Test3">
+        <test name="Group Test3" enabled="false">
  	  	<groups>
     		<run>
     			<include name="GroupC"/>
