@@ -66,7 +66,7 @@ public class SingletonDriver {
 
 				        caps.setCapability("browserName", browser);
 				        caps.setCapability("version", ffVersion);
-				        caps.setCapability("platform", Platform.WIN8);
+				        caps.setCapability("platform", platform);
 				        caps.setCapability("applicationName",
 				                            platform.toUpperCase() + "-" +
 				                            browser.toUpperCase());
@@ -78,10 +78,9 @@ public class SingletonDriver {
 				        new LocalFileDetector());
 				        break;
 			} else {
-				platform = "Platform."+platform;
 		        caps.setCapability("browserName", System.getProperty("browser",browser));
 		        caps.setCapability("version", ffVersion);
-		        caps.setCapability("platform", Platform.WIN8);
+		        caps.setCapability("platform", platform);
 		        caps.setCapability("applicationName",
 		                            platform.toUpperCase() + "-" +
 		                            browser.toUpperCase());

@@ -7,11 +7,11 @@ import org.testng.annotations.Parameters;
 import bpb.Singleton.SingletonDriver;
 
 public class BaseClass {
-	@Parameters({"browser","platform","environment"})
+	@Parameters({"browser","environment","platform"})
 	@BeforeSuite(alwaysRun=true, enabled=true)
-	protected void suiteSetup(@Optional(Default_Values.BROWSER) String browser,
-	                          @Optional(Default_Values.ENVIRONMENT) String environment,
-	                          @Optional(Default_Values.PLATFORM) String
+	protected void suiteSetup(@Optional(Default_Values.BROWSER)String browser,
+			@Optional(Default_Values.ENVIRONMENT)String environment,
+			@Optional(Default_Values.PLATFORM)String
 	platform)
 	                          throws Exception {
 
