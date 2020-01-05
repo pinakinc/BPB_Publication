@@ -36,8 +36,9 @@ public class TestClass1 {
 	}
 	
 	@BeforeTest(groups= {"GroupA","GroupB","GroupC"})
-	public void setUp() {
-		actKeywords.openBrowser("chrome");
+	@Parameters({"browser","environment","platform"})
+	public void setUp(String browser,String environment,String platform) {
+		actKeywords.openBrowser(browser,environment,platform);
 		wdWait = new WaitClass();
 		wdWait.waitImplicitely();
 		//SingletonDriver.getInstance().getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

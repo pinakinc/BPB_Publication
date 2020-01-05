@@ -28,7 +28,7 @@ import bpb.keywords.Action_Keywords;
 
 
 
-public class TestClass2 {
+public class TestClass2 extends BaseClass{
 	
 	Action_Keywords actKeywords = new Action_Keywords();
 	Assertions assertions = new Assertions();
@@ -50,8 +50,9 @@ public class TestClass2 {
 	}
 	
 	@BeforeTest(groups= {"GroupA","GroupB","GroupC"})
-	public void setUp() {
-		actKeywords.openBrowser("chrome");
+	@Parameters({"browser","environment","platform"})
+	public void setUp(String browser,String environment,String platform) {
+		actKeywords.openBrowser(browser,environment,platform);
 		wdWait = new WaitClass();
 		wdWait.waitImplicitely();
 		reporter = new ExtentHtmlReporter("report.html");

@@ -27,8 +27,8 @@ public class Action_Keywords {
 	}
 
 	
-	public void openBrowser(String browser) { try { 
-	 SingletonDriver.getInstance().setDriver("chrome", "windows", "windows"); 
+	public void openBrowser(String browser,String environment,String platform) { try { 
+	 SingletonDriver.getInstance().setDriver(browser, environment, platform); 
 	 SingletonDriver.getInstance().getDriver(); 
 	 SessionId session = ((RemoteWebDriver)SingletonDriver.getInstance().getDriver()).getSessionId();
 	 System.out.println("Session is "+session);

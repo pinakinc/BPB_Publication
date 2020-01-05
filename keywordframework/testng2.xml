@@ -8,6 +8,9 @@
     		</run>
     	</groups>
     	<parameter name="param1" value="GroupA" />
+    	<parameter name="browser" value="firefox" />
+    	<parameter name="platform" value="Platform.WIN8" />
+    	<parameter name="environment" value="bstack" />
     	
         <classes>
             <class name="keywordframework.TestClass2">

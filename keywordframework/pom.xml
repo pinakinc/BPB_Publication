@@ -53,7 +53,7 @@
     <groupId>org.testng</groupId>
     <artifactId>testng</artifactId>
     <version>7.0.0</version>
-    <scope>test</scope>
+    <scope>compile</scope>
 </dependency>
 
   </dependencies>
@@ -96,7 +96,7 @@
           <target>1.8</target>
         
           <suiteXmlFiles>
-            <suiteXmlFile>testng.xml</suiteXmlFile>
+            <suiteXmlFile>testng2.xml</suiteXmlFile>
           </suiteXmlFiles>
         
         </configuration>
